@@ -1,23 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxPromise from 'redux-promise'
 import thunk from 'redux-thunk'
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 
 import App from './components/app';
 import reducers from './reducers';
 import rootReducer from './reducers'
 
-// const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const history = createHistory();
 
+const middleWare = [
+  thunk,
+  ReduxPromise,
+  routerMiddleware(history)
+]
+
+const mid = compose (applyMiddleware(...middleWare))
 const store = createStore(
   rootReducer,
-  applyMiddleware(ReduxPromise, thunk)
+  mid
 )
-
+console.log(history)
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>
-  , document.querySelector('.container'));
+  , document.querySelector('.app'));

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { fetchQuestions } from '../actions/index';
 import { bindActionCreators } from 'redux';
-import _ from 'lodash';
 import { connect } from 'react-redux';
 
-export class QuestionSummary extends React.Component {
+export class QuestionSummary extends Component {
   constructor(props){
     super(props)
   }
@@ -13,18 +12,22 @@ export class QuestionSummary extends React.Component {
     this.props.fetchQuestions()
   }
 
-renderQuestions(){
-  return _.map(this.props.questions, questions =>{
-    console.log(this.props.questions)
-      {questions}
-  })
-}
-
   render(){
+    if (this.props.loading){
+      return <div> 'Data is loading' </div>
+    }
+
+    const renderQuestions = this.props.questions.questions.map(question => {
+      console.log(question.question, question.answer)
+       return <li key={question._id}> {question.question} </li>
+      }
+    )
     return(
-      <div className="container questions">
-      <h4>View list of questions</h4>
-      {this.renderQuestions()}
+      <div>
+        <button onClick={() => {this.props.history.push('/questions/new')}}> Create New </button>
+        <ul>
+        {renderQuestions}
+        </ul>
       </div>
     )
   }
@@ -36,7 +39,8 @@ function mapDispatchToProps(dispatch){
 
   function mapStateToProps (state){
     return {
-      questions : state.question
+      questions : state.questions,
+      loading: state.questions.loading
     };
   }
 

@@ -10,9 +10,7 @@ export function fetchQuestions (){
 
       return  (dispatch, getState) => {
         dispatch({
-          type: FETCH_QUESTIONS_PENDING,
-          questions:[],
-          status: "Pending"
+          type: FETCH_QUESTIONS_PENDING
         });
 
         return axios({

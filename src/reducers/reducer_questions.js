@@ -4,7 +4,7 @@ const initialState = {
   questions: [],
   success: false,
   message: "No Data Loaded",
-  status: "Pending"
+  loading: true
 }
 
 export default function(state = initialState, action){
@@ -12,14 +12,14 @@ export default function(state = initialState, action){
     case FETCH_QUESTIONS_PENDING:
     return {
       questions: action.questions,
-      status: action.status
+      loading: true
     };
     case FETCH_QUESTIONS_SUCCESS:
     return {
             ...state,
             questions: action.questions,
             success: action.success,
-            status: action.status,
+            loading: false,
             message: action.message
   };
   case FETCH_QUESTIONS_ERROR:
@@ -27,7 +27,7 @@ export default function(state = initialState, action){
           ...state,
           questions: action.questions,
           success: action.success,
-          status: action.status,
+          loading: true,
           message: action.message
 };
   default:

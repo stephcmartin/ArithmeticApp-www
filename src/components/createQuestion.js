@@ -19,7 +19,7 @@ export default class createQuestion extends React.Component {
           Distractors:
           <input type="text" name="distractors" />
         </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="btn btn-primary"/>
       </form>
       </div>
     );

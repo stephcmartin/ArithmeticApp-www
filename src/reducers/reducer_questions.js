@@ -62,19 +62,13 @@ export default function(state = initialState, action){
   // Retrieving One Question
   case FETCH_QUESTION_ID_PENDING:
   return {
-    question: action.question,
+    questions: action.question,
     loading: true
   };
   case FETCH_QUESTION_ID_SUCCESS:
-  console.log('action', action.question)
-  // This logs {_id: "5b10925a70ef6b09da172c58", 
-  // question: "what is 1 + 1", 
-  // answer: "2", distractors: "3", 
-  // createdAt: "2018-06-01T00:24:58.165Z", …}
-  // Which is the data I want!
   return {
           ...state,
-          question: action.question,
+          questions: {...state.questions, [action.question._id]:action.question },
           success: action.success,
           loading: false,
           message: action.message
@@ -82,7 +76,7 @@ export default function(state = initialState, action){
   case FETCH_QUESTION_ID_ERROR:
   return {
         ...state,
-        question: action.question,
+        questions: action.question,
         success: action.success,
         loading: true,
         message: action.message

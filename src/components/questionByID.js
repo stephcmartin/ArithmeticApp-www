@@ -7,19 +7,19 @@ export class QuestionById extends React.Component {
 
     constructor(props){
         super(props)
-        console.log('consturctor props is this', props)
+        
       }
 
       componentDidMount(){
+          console.log('this.props', this.props)
         this.props.fetchQuestionById('5b10925a70ef6b09da172c58')
       }
 
 
     render(){
-        console.log("props", this.props.question)
-        return (
-            'hello'
-        )
+       return (
+           'hello'
+       )
       }
 }
 
@@ -28,9 +28,9 @@ function mapDispatchToProps(dispatch){
   }
 
   function mapStateToProps (state){
-      console.log('state.question', state.question)
     return {
-      question : state.question
+      question : state.questions,
+      loading: state.loading
     };
   }
 

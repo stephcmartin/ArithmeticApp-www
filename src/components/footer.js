@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 const footer = {
   textAlign: 'center',
-  background: '#f4f4f4',
+  background: '#9ed1e8',
   position: 'relative',
-  padding: "16px 0px",
+  height: "48px",
   bottom: "0px",
-  width: "100%"
+  width: "100%",
 }
 
 export default class Footer extends Component {
@@ -14,9 +14,8 @@ export default class Footer extends Component {
   render() {
     return (
       <div className="footer" style={footer}>
-        <p>Created by Stephanie Martin Connelly</p>
+        <p>This <em>very unfinished project</em> was created by Stephanie Martin Connelly</p>
       </div>
     );
   }
 }
-  

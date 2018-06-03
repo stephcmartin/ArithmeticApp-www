@@ -31,8 +31,8 @@ export class createQuestion extends React.Component {
   render() {
     return (
       <div className="container createQuestion">
-      <h4>Create a question</h4>
-      <p>All form fields are required</p>
+      <h3>Create a question</h3>
+      <p><em>*All form fields are required</em></p>
       <form onSubmit={this.formClickHandeler}>
         <label>
           Question:
@@ -56,7 +56,7 @@ export class createQuestion extends React.Component {
           name="distractors" 
           onChange={e => this.onInputChange('distractors', e.target.value)}/>
         </label>
-          <input type="submit" />
+          <input type="submit" className="btn btn-primary"/>
       </form>
       </div>
     );

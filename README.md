@@ -40,7 +40,19 @@ The toughest hurdle was doing the CRUD actions with react.js, a language that I'
 ### Rendering a single post
 
 -  A lot of time was spent trying to figure out how to *slot in* the question into the reducer object which contains all of the other questions. 
-- this ```this.props``` was not rendering, I could not add ```this.props.match.params.questionID``` to the ```fetchQuestionById()``` function. 
+
+```  case FETCH_QUESTION_ID_SUCCESS:
+  return {
+          ...state,
+          questions: {...state.questions, [action.question._id]:action.question },
+          success: action.success,
+          loading: false,
+          message: action.message
+  };
+  ```
+
+  It's similar to the way I post a comment, however, I need to debug more to figure out why ```this.props``` isn't working.
+- since ```this.props``` was not rendering, I could not add ```this.props.match.params.questionID``` to the ```fetchQuestionById()``` function and render the single question.
 
 ## What I would do next
 
@@ -48,7 +60,7 @@ The toughest hurdle was doing the CRUD actions with react.js, a language that I'
 - Work on Update and Delete actions
 - Added Search Bar functionality
 - Added pagination functionality
-- Work on CORS on backend
+- Work on CORS on backend (a user currently *HAS* to add the chrome extention in order to use the app). This could be a simple fix on the backend.
 
 ## To Use This Repo
 ```

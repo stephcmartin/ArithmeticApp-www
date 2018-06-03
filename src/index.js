@@ -24,7 +24,6 @@ const store = createStore(
   rootReducer,
   mid
 )
-console.log(history)
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

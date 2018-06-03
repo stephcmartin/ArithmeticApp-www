@@ -20,18 +20,21 @@ export default class Welcome extends Component {
           <h1>Welcome to Arithmetic App 🚀</h1>
           <p>We are so glad you decided to join us!</p>
         </div>
+          <container>
+            <row>
+              <div className="welcomeText col-md-6" style={welcomeText}>
+              <h5>Want to challenge yourself? 🐯</h5>
+              <Link to={"/questions"}>
+              <p>View list of questions</p>
+              </Link>
 
-        <div className="welcomeText" style={welcomeText}>
-        <h5>Want to challenge yourself? 🐯</h5>
-        <Link to={"/questions"}>
-        <p>View list of questions</p>
-        </Link>
-
-        <h5>Want to add to a challenge? ⚡️</h5>
-        <Link to={"/questions/new"}>
-        <p>Create a new questions</p>
-        </Link>
-        </div>
+              <h5 className="col-md-6">Want to add to a challenge? ⚡️</h5>
+              <Link to={"/questions/new"}>
+              <p>Create a new questions</p>
+              </Link>
+              </div>
+              </row>
+           </container>
       </div>
     );
   }

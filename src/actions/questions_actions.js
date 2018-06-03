@@ -52,7 +52,6 @@ export function postQuestion (newQuestion){
       url: ROOT_URL,
       data: newQuestion,
     }).then(function(response){
-      console.log('working response is', response)
       dispatch({
         type: FPOST_QUESTION_SUCCESS,
         question: response.data,
@@ -61,7 +60,6 @@ export function postQuestion (newQuestion){
         status: "Success"
       });
     }).catch(function(response){
-      console.log('fail response is', response)
       dispatch({
         type: POST_QUESTION_ERROR,
         question: {},

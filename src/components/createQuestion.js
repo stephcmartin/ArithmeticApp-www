@@ -1,27 +1,66 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { postQuestion } from '../actions/index';
 
-export default class createQuestion extends React.Component {
+
+export class createQuestion extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state ={
+      question: '',
+      answer: '',
+      distractors: '',
+    }
+
+    // This binding is necessary to make `this` work in the callback
+    this.formClickHandeler = this.formClickHandeler.bind(this);
+  }
+
+
+  formClickHandeler(e, values) {
+    e.preventDefault()
+    this.props.postQuestion(this.state)
+  }
+
+  onInputChange(name, value){
+    let newState={}
+    newState[name] = value 
+    this.setState(newState)
+  }
+
   render() {
     return (
       <div className="container createQuestion">
       <h4>Create a question</h4>
       <p>All form fields are required</p>
-      <form>
+      <form onSubmit={this.formClickHandeler}>
         <label>
           Question:
-          <input type="text" name="question" />
+          <input value={this.state.question} 
+          type="text" 
+          name="question" 
+          onChange={e => this.onInputChange('question', e.target.value)
+          }/>
         </label>
         <label>
           Answer:
-          <input type="text" name="answer" />
+          <input value={this.state.answer} 
+          type="text" 
+          name="answer" 
+          onChange={e => this.onInputChange('answer', e.target.value)}/>
         </label>
         <label>
           Distractors:
-          <input type="text" name="distractors" />
+          <input value={this.state.distractors} 
+          type="text" 
+          name="distractors" 
+          onChange={e => this.onInputChange('distractors', e.target.value)}/>
         </label>
-          <input type="submit" value="Submit" className="btn btn-primary"/>
+          <input type="submit" />
       </form>
       </div>
     );
   }
 }
+
+export default connect (null,{ postQuestion })(createQuestion)

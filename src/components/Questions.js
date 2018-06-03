@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchQuestions } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import _ from 'lodash'
 
 export class QuestionSummary extends Component {
   constructor(props){
@@ -13,12 +14,12 @@ export class QuestionSummary extends Component {
   }
 
   render(){
+    console.log(this.props.questions.questions)
     if (this.props.loading){
       return <div> 'Data is loading' </div>
     }
 
-    const renderQuestions = this.props.questions.questions.map(question => {
-      console.log(question.question, question.answer)
+    const renderQuestions = _.map(this.props.questions.questions, question => {
        return <li key={question._id}> {question.question} </li>
       }
     )

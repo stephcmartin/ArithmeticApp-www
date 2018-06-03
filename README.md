@@ -51,6 +51,7 @@ The toughest hurdle was doing the CRUD actions with react.js, a language that I'
 
 ## To Use This Repo
 ```
+> install <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">Allow-Control-Allow-Origin: * from google chrome store</a>
 > npm install
 > npm start
 > head to localhost:8080

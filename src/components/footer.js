@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const footer = {
   textAlign: 'center',
   background: '#f4f4f4',
-  position: 'absolute',
+  position: 'relative',
   padding: "16px 0px",
   bottom: "0px",
   width: "100%"
@@ -19,3 +19,4 @@ export default class Footer extends Component {
     );
   }
 }
+  

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { push } from 'react-router-redux'
 
 const ROOT_URL = 'https://steph-ps-backend.herokuapp.com/arithmetic'
 
@@ -10,6 +11,12 @@ export const POST_QUESTION_PENDING = "POST_QUESTION_PENDING"
 export const POST_QUESTION_ERROR = "POST_QUESTION_ERROR"
 export const POST_QUESTION_SUCCESS = "POST_QUESTION_SUCCESS"
 
+export const FETCH_QUESTION_ID_PENDING = "FETCH_QUESTION_ID_PENDING"
+export const FETCH_QUESTION_ID_SUCCESS = "FETCH_QUESTION_ID_SUCCESS"
+export const FETCH_QUESTION_ID_ERROR = "FETCH_QUESTION_ID_ERROR"
+
+
+// Retrieveing All Questions
 export function fetchQuestions (){
 
       return  (dispatch, getState) => {
@@ -40,6 +47,8 @@ export function fetchQuestions (){
       }
 }
 
+// Creating New Question
+
 export function postQuestion (newQuestion){
 
   return  (dispatch, getState) => {
@@ -53,18 +62,50 @@ export function postQuestion (newQuestion){
       data: newQuestion,
     }).then(function(response){
       dispatch({
-        type: FPOST_QUESTION_SUCCESS,
+        type: POST_QUESTION_SUCCESS,
         question: response.data,
         success: true,
         message: "Success at posting data",
         status: "Success"
       });
+      dispatch(push('/questions'))
     }).catch(function(response){
       dispatch({
         type: POST_QUESTION_ERROR,
         question: {},
         success: false,
         message: "Error: Could not post data!",
+        status: "Error"
+      })
+    })
+  }
+}
+
+// Retrieveing One Questions
+export function fetchQuestionById (questionId){
+
+  return  (dispatch, getState) => {
+    dispatch({
+      type: FETCH_QUESTION_ID_PENDING
+    });
+
+    return axios({
+      method: 'get',
+      url: `https://steph-ps-backend.herokuapp.com/arithmetic/${questionId}`
+    }).then(function(response){
+      dispatch({
+        type: FETCH_QUESTION_ID_SUCCESS,
+        question: response.data,
+        success: true,
+        message: "Success at fetching question by questionId",
+        status: "Success"
+      });
+    }).catch(function(response){
+      dispatch({
+        type: FETCH_QUESTION_ID_ERROR,
+        question: {},
+        success: false,
+        message: "Error: Could not retrieve that question!",
         status: "Error"
       })
     })

@@ -1,7 +1,6 @@
 import _ from 'lodash'
 import { FETCH_QUESTIONS_PENDING, FETCH_QUESTIONS_ERROR, FETCH_QUESTIONS_SUCCESS,
-  POST_QUESTION_PENDING, POST_QUESTION_ERROR, POST_QUESTION_SUCCESS,
-  FETCH_QUESTION_ID_PENDING, FETCH_QUESTION_ID_SUCCESS, FETCH_QUESTION_ID_ERROR
+  POST_QUESTION_PENDING, POST_QUESTION_ERROR, POST_QUESTION_SUCCESS
 } from "../actions/";
 
 
@@ -59,28 +58,6 @@ export default function(state = initialState, action){
           message: action.message
     };
 
-  // Retrieving One Question
-  case FETCH_QUESTION_ID_PENDING:
-  return {
-    questions: action.question,
-    loading: true
-  };
-  case FETCH_QUESTION_ID_SUCCESS:
-  return {
-          ...state,
-          questions: {...state.questions, [action.question._id]:action.question },
-          success: action.success,
-          loading: false,
-          message: action.message
-  };
-  case FETCH_QUESTION_ID_ERROR:
-  return {
-        ...state,
-        questions: action.question,
-        success: action.success,
-        loading: true,
-        message: action.message
-  };
   default:
       return state;
         

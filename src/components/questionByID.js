@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { fetchQuestionById , deleteQuestionById } from '../actions/index';
+import { fetchQuestionById } from '../actions/index';
+import { deleteQuestionById } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
@@ -11,9 +12,8 @@ export class QuestionById extends React.Component {
         this.deleteClickHandeler = this.deleteClickHandeler.bind(this);
       }
 
-      deleteClickHandeler(foo) {
-        console.log('deleting this question', foo.props.question.question._id)
-        this.props.deleteQuestionById(foo.props.question.question._id)
+      deleteClickHandeler() {
+        this.props.deleteQuestionById(this.props.question.question._id)
       }
 
       componentDidMount(){
@@ -22,7 +22,6 @@ export class QuestionById extends React.Component {
 
 
     render(){
-      const foo = this.props.question.question._id
        return (
          <div className="questionById">
            <h4>Question:</h4>
@@ -32,7 +31,7 @@ export class QuestionById extends React.Component {
            <h4>Distractor:</h4>
            <p>{this.props.question.question.distractors}</p>
            <button type="submit" className="btn btn-danger"
-           onClick={() => {console.log('foo is', foo), this.deleteClickHandeler(this, foo)}}>
+           onClick={(e) => {this.deleteClickHandeler(this)}}>
            Delete</button>
           <Link to ={"/questions"}><p><em><br />Back to list of questions</em></p></Link>
            </div>
@@ -47,7 +46,7 @@ export class QuestionById extends React.Component {
   }
 
   function mapDispatchToProps(dispatch){
-    return bindActionCreators ({ fetchQuestionById }, dispatch)
+    return bindActionCreators ({ fetchQuestionById , deleteQuestionById}, dispatch)
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionById)

@@ -43,12 +43,10 @@ The toughest hurdle was doing the CRUD actions with react.js, a language that I'
 - Work on Update and Delete actions
 - Added Search Bar functionality
 - Added pagination functionality
-- Work on CORS on backend (a user currently *HAS* to add the chrome extention in order to use the app)
+
 
 ## To Use This Repo
 ```
-> install <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">Allow-Control-Allow-Origin: * from google chrome store</a>* 
-<br> Must turn this on for CORS to work
 > npm install
 > npm start
 > head to localhost:8080

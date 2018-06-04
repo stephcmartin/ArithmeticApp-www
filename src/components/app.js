@@ -29,8 +29,8 @@ export default class App extends Component {
         <Welcome />
           <Switch>
               <Route path="/questions/new" component={CreateQuestion} />
-              <Route path="/questions" component={Questions} />
               <Route path="/questions/:id" component ={QuestionByID} />
+              <Route path="/questions" component={Questions} />
           </Switch>
         <Footer />
       </div>

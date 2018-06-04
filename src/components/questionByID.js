@@ -2,33 +2,37 @@ import React, { Component } from 'react';
 import { fetchQuestionById } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 export class QuestionById extends React.Component {
 
     constructor(props){
         super(props)
-        console.log('this.props', this.props.question)
       }
 
       componentDidMount(){
-        
-        // this.props.fetchQuestionById(this.props.match.params.id)
-        this.props.fetchQuestionById('5b15351acde1319ee31d16ab')
+        this.props.fetchQuestionById(this.props.match.params.id)
       }
 
 
     render(){
-   console.log('this.props in render', this.props)
        return (
-           'View of single question'
+         <div className="questionById">
+           <h4>Question:</h4>
+           <p>{this.props.question.question.question}</p>
+           <h4>Answer:</h4>
+           <p>{this.props.question.question.answer}</p>
+           <h4>Distractor:</h4>
+           <p>{this.props.question.question.distractors}</p>
+           <Link to ={"/questions"}><button className="btn btn-primary">Back to list of questions</button></Link>
+           </div>
        )
       }
 }
 
   function mapStateToProps (state){
-    console.log('state', state.questions)
     return {
-      question: state.questions
+      question: state.question
     };
   }
 

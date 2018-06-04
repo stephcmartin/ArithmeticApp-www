@@ -22,7 +22,8 @@ export default function(state = initialState, action){
   case FETCH_QUESTION_ID_SUCCESS:
   return {
           ...state,
-          question: {...state.questions, [action.question._id]:action.question },
+          // question: {...state.question, [action.question._id]:action.question },
+          question: action.question,
           success: action.success,
           loading: false,
           message: action.message

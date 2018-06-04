@@ -131,7 +131,8 @@ export function deleteQuestionById (questionId){
 
     return axios({
       method: 'delete',
-      url: `https://steph-ps-backend.herokuapp.com/arithmetic/${questionId}`
+      url: `https://steph-ps-backend.herokuapp.com/arithmetic/${questionId}`,
+      data: questionId
     }).then(function(response){
       dispatch({
         type: DELETE_QUESTION_ID_SUCCESS,
@@ -151,4 +152,3 @@ export function deleteQuestionById (questionId){
     })
   }
 }
-

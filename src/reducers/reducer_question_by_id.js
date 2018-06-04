@@ -1,6 +1,7 @@
 
 import { FETCH_QUESTION_ID_PENDING, FETCH_QUESTION_ID_SUCCESS, FETCH_QUESTION_ID_ERROR,
-  DELETE_QUESTION_ID_PENDING, DELETE_QUESTION_ID_SUCCESS, DELETE_QUESTION_ID_ERROR
+  DELETE_QUESTION_ID_PENDING, DELETE_QUESTION_ID_SUCCESS, DELETE_QUESTION_ID_ERROR,
+  EDIT_QUESTION_PENDING, EDIT_QUESTION_SUCCESS, EDIT_QUESTION_ERROR
 } from "../actions/";
 
 
@@ -61,12 +62,34 @@ export default function(state = initialState, action){
         loading: true,
         message: action.message
   };
+
+  // Updating one questions
+  case EDIT_QUESTION_PENDING:
+  return {
+    question: action.question,
+    loading: true
+  };
+  case EDIT_QUESTION_SUCCESS:
+  return {
+          ...state,
+          question: {...state.questions, [action.question._id]:action.question },
+          success: action.success,
+          loading: false,
+          message: action.message
+  };
+  case EDIT_QUESTION_ERROR:
+  return {
+        ...state,
+        question: action.question,
+        success: action.success,
+        loading: true,
+        message: action.message
+  };
+
+  //Always return default
   default:
       return state;
-        
-    }
 
-    
-    
+    }
 
 }

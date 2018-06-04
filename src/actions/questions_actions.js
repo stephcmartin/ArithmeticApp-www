@@ -128,7 +128,6 @@ export function deleteQuestionById (questionId){
       question: {},
       status: "Pending"
     });
-
     return axios({
       method: 'delete',
       url: `https://steph-ps-backend.herokuapp.com/arithmetic/${questionId}`
@@ -137,9 +136,10 @@ export function deleteQuestionById (questionId){
         type: DELETE_QUESTION_ID_SUCCESS,
         question: response.data,
         success: true,
-        message: "Success at deleting question by questionId",
+        message: `Success at deleting ${questionId}`,
         status: "Success"
       });
+      dispatch(push('/questions'))
     }).catch(function(response){
       dispatch({
         type: DELETE_QUESTION_ID_ERROR,
@@ -151,4 +151,3 @@ export function deleteQuestionById (questionId){
     })
   }
 }
-

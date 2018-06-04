@@ -1,5 +1,6 @@
 
-import { FETCH_QUESTION_ID_PENDING, FETCH_QUESTION_ID_SUCCESS, FETCH_QUESTION_ID_ERROR
+import { FETCH_QUESTION_ID_PENDING, FETCH_QUESTION_ID_SUCCESS, FETCH_QUESTION_ID_ERROR,
+  DELETE_QUESTION_ID_PENDING, DELETE_QUESTION_ID_SUCCESS, DELETE_QUESTION_ID_ERROR
 } from "../actions/";
 
 
@@ -29,6 +30,30 @@ export default function(state = initialState, action){
           message: action.message
   };
   case FETCH_QUESTION_ID_ERROR:
+  return {
+        ...state,
+        question: action.question,
+        success: action.success,
+        loading: true,
+        message: action.message
+  };
+
+
+  // Deleteing one question
+  case DELETE_QUESTION_ID_PENDING:
+  return {
+    question: action.question,
+    loading: true
+  };
+  case DELETE_QUESTION_ID_SUCCESS:
+  return {
+          ...state,
+          question: action.question,
+          success: action.success,
+          loading: false,
+          message: action.message
+  };
+  case DELETE_QUESTION_ID_ERROR:
   return {
         ...state,
         question: action.question,

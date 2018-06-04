@@ -15,6 +15,10 @@ export const FETCH_QUESTION_ID_PENDING = "FETCH_QUESTION_ID_PENDING"
 export const FETCH_QUESTION_ID_SUCCESS = "FETCH_QUESTION_ID_SUCCESS"
 export const FETCH_QUESTION_ID_ERROR = "FETCH_QUESTION_ID_ERROR"
 
+export const DELETE_QUESTION_ID_PENDING = "DELETE_QUESTION_ID_PENDING"
+export const DELETE_QUESTION_ID_SUCCESS = "DELETE_QUESTION_ID_SUCCESS"
+export const DELETE_QUESTION_ID_ERROR = "DELETE_QUESTION_ID_ERROR"
+
 
 // Retrieveing All Questions
 export function fetchQuestions (){
@@ -113,3 +117,38 @@ export function fetchQuestionById (questionId){
     })
   }
 }
+
+// Deleting One Question
+
+export function deleteQuestionById (questionId){
+
+  return  (dispatch, getState) => {
+    dispatch({
+      type: DELETE_QUESTION_ID_PENDING,
+      question: {},
+      status: "Pending"
+    });
+
+    return axios({
+      method: 'delete',
+      url: `https://steph-ps-backend.herokuapp.com/arithmetic/${questionId}`
+    }).then(function(response){
+      dispatch({
+        type: DELETE_QUESTION_ID_SUCCESS,
+        question: response.data,
+        success: true,
+        message: "Success at deleting question by questionId",
+        status: "Success"
+      });
+    }).catch(function(response){
+      dispatch({
+        type: DELETE_QUESTION_ID_ERROR,
+        question: {},
+        success: false,
+        message: "Error: Could not delete that question!",
+        status: "Error"
+      })
+    })
+  }
+}
+

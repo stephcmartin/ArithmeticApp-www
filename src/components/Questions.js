@@ -31,10 +31,7 @@ export class QuestionSummary extends Component {
        return (
          <div className="row" key={question._id}>
           <div className="col-md-8">  
-            <Link to ={"/questions/" + question._id} onClick={() => {
-              console.log('Clicked on id', question._id)
-              
-            }}>
+            <Link to ={"/questions/" + question._id}>
             <li> 
             Question: {question.question} <br />
             Answer: {question.answer} <br />
@@ -45,8 +42,7 @@ export class QuestionSummary extends Component {
           <div className="col-md-4">
           <button className="btn btn-primary"
           onClick={() => 
-          {this.props.history.push(`/questions/${question._id}`), console.log('View button clicked on id,', question._id)}}>View</button>
-          <button className="btn btn-danger">Delete</button>
+          {this.props.history.push(`/questions/${question._id}`)}}>View</button>
           </div>
       </div>
        )

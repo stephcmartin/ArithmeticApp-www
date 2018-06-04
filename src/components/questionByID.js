@@ -24,7 +24,8 @@ export class QuestionById extends React.Component {
            <p>{this.props.question.question.answer}</p>
            <h4>Distractor:</h4>
            <p>{this.props.question.question.distractors}</p>
-           <Link to ={"/questions"}><button className="btn btn-primary">Back to list of questions</button></Link>
+           <button className="btn btn-danger" onClick={()=> {console.log('delete this item', this.props.question.question._id)}}>Delete</button>
+          <Link to ={"/questions"}><p><em><br />Back to list of questions</em></p></Link>
            </div>
        )
       }

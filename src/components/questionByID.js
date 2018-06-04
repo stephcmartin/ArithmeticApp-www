@@ -8,13 +8,12 @@ export class QuestionById extends React.Component {
 
     constructor(props){
         super(props)
-        this.deleteClickHandeler = this.deleteClickHandeler.bind(this);  
+        this.deleteClickHandeler = this.deleteClickHandeler.bind(this);
       }
 
-      deleteClickHandeler(e, foo) {
-        e.preventDefault()
-        console.log('deleting this question', foo)
-        this.props.deleteQuestionById(foo)
+      deleteClickHandeler(foo) {
+        console.log('deleting this question', foo.props.question.question._id)
+        this.props.deleteQuestionById(foo.props.question.question._id)
       }
 
       componentDidMount(){
@@ -24,7 +23,6 @@ export class QuestionById extends React.Component {
 
     render(){
       const foo = this.props.question.question._id
-      console.log('foo', foo)
        return (
          <div className="questionById">
            <h4>Question:</h4>
@@ -33,7 +31,9 @@ export class QuestionById extends React.Component {
            <p>{this.props.question.question.answer}</p>
            <h4>Distractor:</h4>
            <p>{this.props.question.question.distractors}</p>
-           <button type="submit" className="btn btn-danger" onClick={(e, foo) => {this.deleteClickHandeler(e, foo)}}>Delete</button>
+           <button type="submit" className="btn btn-danger"
+           onClick={() => {console.log('foo is', foo), this.deleteClickHandeler(this, foo)}}>
+           Delete</button>
           <Link to ={"/questions"}><p><em><br />Back to list of questions</em></p></Link>
            </div>
        )

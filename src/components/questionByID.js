@@ -7,16 +7,18 @@ export class QuestionById extends React.Component {
 
     constructor(props){
         super(props)
+        console.log('this.props', this.props.question)
       }
 
       componentDidMount(){
-          console.log('this.props', this.props)
-        // this.props.fetchQuestionById(this.props.match.params)
-        this.props.fetchQuestionById('5b10925a70ef6b09da172c58')
+        
+        // this.props.fetchQuestionById(this.props.match.params.id)
+        this.props.fetchQuestionById('5b15351acde1319ee31d16ab')
       }
 
 
     render(){
+   console.log('this.props in render', this.props)
        return (
            'View of single question'
        )
@@ -24,7 +26,7 @@ export class QuestionById extends React.Component {
 }
 
   function mapStateToProps (state){
-      console.log('state.questions', state.questions)
+    console.log('state', state.questions)
     return {
       question: state.questions
     };

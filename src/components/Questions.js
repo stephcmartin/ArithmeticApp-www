@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SearchBar from './searchBar.js'
+
 import _ from 'lodash';
 
 const listOfQuestions ={
@@ -28,10 +29,10 @@ export class QuestionSummary extends Component {
 
     const renderQuestions = _.map(this.props.questions.questions, question => {
        return (
-         <div className="row">
+         <div className="row" key={question._id}>
           <div className="col-md-8">  
             <Link to ={"/questions/" + question._id}>
-            <li key={question._id}> 
+            <li> 
             Question: {question.question} <br />
             Answer: {question.answer} <br />
             Distractors: {question.distractors}

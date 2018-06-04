@@ -86,7 +86,9 @@ export function fetchQuestionById (questionId){
 
   return  (dispatch, getState) => {
     dispatch({
-      type: FETCH_QUESTION_ID_PENDING
+      type: FETCH_QUESTION_ID_PENDING,
+      question: {},
+      status: "Pending"
     });
 
     return axios({

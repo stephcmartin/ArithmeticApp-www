@@ -19,6 +19,10 @@ export const DELETE_QUESTION_ID_PENDING = "DELETE_QUESTION_ID_PENDING"
 export const DELETE_QUESTION_ID_SUCCESS = "DELETE_QUESTION_ID_SUCCESS"
 export const DELETE_QUESTION_ID_ERROR = "DELETE_QUESTION_ID_ERROR"
 
+export const EDIT_QUESTION_PENDING = "EDIT_QUESTION_PENDING"
+export const EDIT_QUESTION_SUCCESS = "EDIT_QUESTION_SUCCESS"
+export const EDIT_QUESTION_ERROR = "EDIT_QUESTION_ERROR"
+
 
 // Retrieveing All Questions
 export function fetchQuestions (){
@@ -146,6 +150,39 @@ export function deleteQuestionById (questionId){
         question: {},
         success: false,
         message: "Error: Could not delete that question!",
+        status: "Error"
+      })
+    })
+  }
+}
+
+export function editQuestionById (editedQuestionData, questionId){
+
+  return  (dispatch, getState) => {
+    dispatch({
+      type: EDIT_QUESTION_PENDING,
+      question: {},
+      status: "Pending"
+    });
+    return axios({
+      method: 'delete',
+      url: `https://steph-ps-backend.herokuapp.com/arithmetic/${questionId}`,
+      data: editedQuestionData
+    }).then(function(response){
+      dispatch({
+        type: EDIT_QUESTION_SUCCESS,
+        question: response.data,
+        success: true,
+        message: `Success at editing ${questionId}`,
+        status: "Success"
+      });
+      dispatch(push('/questions'))
+    }).catch(function(response){
+      dispatch({
+        type: EDIT_QUESTION_ERROR,
+        question: {},
+        success: false,
+        message: "Error: Could not edit that question!",
         status: "Error"
       })
     })

@@ -53,8 +53,6 @@ export class QuestionSummary extends Component {
         <div>
           <SearchBar />
       <div className="listOfQuestions" style={listOfQuestions}>
-        
-       
         <ul>
         {renderQuestions}
         </ul>

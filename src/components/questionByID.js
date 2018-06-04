@@ -7,31 +7,31 @@ export class QuestionById extends React.Component {
 
     constructor(props){
         super(props)
-        
       }
 
       componentDidMount(){
           console.log('this.props', this.props)
+        // this.props.fetchQuestionById(this.props.match.params)
         this.props.fetchQuestionById('5b10925a70ef6b09da172c58')
       }
 
 
     render(){
        return (
-           'hello'
+           'View of single question'
        )
       }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators ({ fetchQuestionById }, dispatch)
+  function mapStateToProps (state){
+      console.log('state.questions', state.questions)
+    return {
+      question: state.questions
+    };
   }
 
-  function mapStateToProps (state){
-    return {
-      question : state.questions,
-      loading: state.loading
-    };
+  function mapDispatchToProps(dispatch){
+    return bindActionCreators ({ fetchQuestionById }, dispatch)
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionById)

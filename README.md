@@ -8,7 +8,7 @@ This application provides a front end to manage questions, answers, and distract
 -   View all questions ✅
 -   Create a new question ✅
 -   View a selected question from the list ✅
--   Edit an existing question ❌ (Working Progress!)
+-   Edit an existing question ❌ (Very close to complete!)
 -   Delete an existing question ✅
 
 The service is hosted on Heroku using the free hobby tier, which means it will be shut down after a period of no activity. It may take several seconds for a response on the first request while this instance and the back end service are started.
@@ -25,7 +25,7 @@ The toughest hurdle was doing the CRUD actions with react.js, a language that I'
 ## What I would do next
 
 - Add success/error messages to UI
-- Work on Update action
+- Work on Update action - need to figure out how to access the values in the input.
 - Added Search Bar functionality
 - Added pagination functionality
 

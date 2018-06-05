@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchQuestionById } from '../actions/index';
 import { deleteQuestionById } from '../actions/index';
+import { editQuestionById } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
@@ -16,18 +17,11 @@ export class QuestionById extends React.Component {
           distractors: this.props.question.question.distractors
         };
 
-        this.saveEdit = this.saveEdit.bind(this);
-
         this.editClickHandeler = this.editClickHandeler.bind(this);
         this.deleteClickHandeler = this.deleteClickHandeler.bind(this);
       }
 
 
-      saveEdit() {
-        // This will save the data and
-        // send a POST action with the editQuestionById() action + reducer
-        console.log('saving updates')
-      }
 
       deleteClickHandeler() {
         this.props.deleteQuestionById(this.props.question.question._id)
@@ -41,6 +35,7 @@ export class QuestionById extends React.Component {
 
       handleSubmit(event) {
           alert('Oops! Looks like you found a bug. Sit back and have a coffee while we work on this.');
+          // this.props.editQuestionById(this.state)
           event.preventDefault();
           }
 
@@ -125,7 +120,7 @@ export class QuestionById extends React.Component {
   }
 
   function mapDispatchToProps(dispatch){
-    return bindActionCreators ({ fetchQuestionById , deleteQuestionById}, dispatch)
+    return bindActionCreators ({ fetchQuestionById , deleteQuestionById, editQuestionById}, dispatch)
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionById)

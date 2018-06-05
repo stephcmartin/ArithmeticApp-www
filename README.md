@@ -22,6 +22,14 @@ I had initially thought the biggest challenge would be setting up the backend; h
 
 The toughest hurdle was doing the CRUD actions with react.js, a language that I'm still relatively new to. Sadly, with the limited timeframe I managed all to complete Create, Read and Delete.
 
+## Update Action:
+
+I managed to create a new edit form that renders the exisiting question, answer and distractor.
+
+Need to figure out a way to access the input fields and will then be able to PATCH.
+
+The current code is 80% there!
+
 ## What I would do next
 
 - Add success/error messages to UI

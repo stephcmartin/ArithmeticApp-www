@@ -28,6 +28,40 @@ I managed to create a new edit form that renders the exisiting question, answer 
 
 Need to figure out a way to access the input fields and will then be able to PATCH.
 
+```
+<form onSubmit={this.handleSubmit}>
+  <label>
+    <h4>Question:</h4>
+    <input
+    value={this.props.question.question.question}
+    type="text"
+    name="question"
+    onChange={e => this.onInputChange('question', e.target.value)}
+    />
+  </label>
+  <label>
+    <h4>Answer:</h4>
+    <input
+    value={this.props.question.question.answer}
+    type="text"
+    name="answer"
+    onChange={e => this.onInputChange('answer', e.target.value)}
+  />
+  </label>
+  <label>
+    <h4>Distractors:</h4>
+    <input
+    value={this.props.question.question.distractors}
+    type="text"
+    name="distractors"
+    onChange={e => this.onInputChange('distractors', e.target.value)}
+    />
+  </label>
+  <br />
+    <input type="submit" className="btn btn-info"/>
+</form>
+```
+
 The current code is 80% there!
 
 ## What I would do next
